@@ -16,8 +16,14 @@
  */
 package library;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.Scene;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -26,6 +32,9 @@ import javafx.stage.Stage;
  * @author Kory
  */
 public class Library extends Application {
+    
+    Stage window;
+    TableView<Book> table;
 
     /**
      * @param args the command line arguments
@@ -36,14 +45,39 @@ public class Library extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Library");
-        GridPane grid = new GridPane();
+        window = primaryStage;
+        window.setTitle("Library");
         
-        Scene scene = new Scene(grid, 300, 250);      
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        //Name column
+        TableColumn<Book, String> nameColumn = new TableColumn<>("Name");
+        nameColumn.setMinWidth(200);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        
+        //Author column
+        TableColumn<Book, String> authorColumn = new TableColumn<>("Author");
+        authorColumn.setMinWidth(200);
+        authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+        
+        //Genre column
+        TableColumn<Book, String> genreColumn = new TableColumn<>("Genre");
+        genreColumn.setMinWidth(200);
+        genreColumn.setCellValueFactory(new PropertyValueFactory<>("genre"));
+        
+        table = new TableView();
+        table.setItems(getBook());
+        table.getColumns().addAll(nameColumn, authorColumn, genreColumn);
+        
+        VBox vbox = new VBox();
+        vbox.getChildren().addAll(table);
+        
+        Scene scene = new Scene(vbox);
+        window.setScene(scene);
+        window.show();
     }
     
-    
-    
+    public ObservableList<Book> getBook() {
+        ObservableList<Book> books = FXCollections.observableArrayList();
+        books.add(new Book("A Game of Thrones", "G. R. R. Martin", "Fantasy", "9780553573404", 1996, "Bantam Books"));
+        return books;
+    }    
 }
