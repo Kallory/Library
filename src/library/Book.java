@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Kory
+ * Copyright (C) 2020 Kallory
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,12 +18,15 @@ package library;
 
 /**
  *
- * @author Kory
+ * @author Kallory
  */
 public class Book {
     private String name;
     private String author;
     private int ISBN;
+    private int year;
+    private String genre;
+    private String publisher;
     
     /**
      * Default constructor for book, initialize all instance variables
@@ -31,7 +34,10 @@ public class Book {
     public Book() {
         this.name = "";
         this.author = "";
+        this.genre = "";
         this.ISBN = 0;
+        this.year = 0;
+        this.publisher = "";
     }
     
     /**
@@ -39,12 +45,18 @@ public class Book {
      * <p>
      * @param name Name of the book
      * @param author Name of the author
+     * @param genre Genre of the book
      * @param ISBN ISBN of the book if it has one, 0 if this doesn't exist
+     * @param year the year the book was published
+     * @param publisher the publisher of the book
      */
-    public Book(String name, String author, int ISBN) {
+    public Book(String name, String author, String genre, int ISBN, int year, String publisher) {
         this.name = name;
         this.author = author;
+        this.genre = genre;
         this.ISBN = ISBN;
+        this.year = year;
+        this.publisher = publisher;
     }
     
     /**
@@ -80,6 +92,22 @@ public class Book {
     }
     
     /**
+     * Accessor for the genre
+     * @return the genre of the book
+     */
+    public String getGenre() {
+        return genre;
+    }
+    
+    /**
+     * Mutator for the genre
+     * @param genre the genre of the book
+     */
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+    
+    /**
      * The ISBN is a unique numerical identification given to a book.
      * This is the accessor for the ISBN.
      * Please note that not all books have an ISBN, for books that don't have
@@ -101,4 +129,35 @@ public class Book {
         this.ISBN = ISBN;
     }
     
+    /**
+     * Accessor for the year the book was published
+     * @return the year the book was published, 0 if unknown
+     */
+    public int getYear() {
+        return year;
+    }
+    
+    /**
+     * Mutator for the year the book was published
+     * @param year the year the book was published
+     */
+    public void setYear(int year) {
+        this.year = year;
+    }
+    
+    /**
+     * Accessor for the name of the company or person(s) that published the book
+     * @return the publisher's name
+     */
+    public String getPublisher() {
+        return publisher;
+    }
+    
+    /**
+     * Mutator for the name of the company or person(s) that published the book
+     * @param publisher the name of the publisher
+     */
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
 }
