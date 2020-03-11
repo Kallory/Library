@@ -23,8 +23,8 @@ package library;
 public class Book {
     private String name;
     private String author;
-    private int ISBN;
-    private int year;
+    private String ISBN;
+    private String year;
     private String genre;
     private String publisher;
     
@@ -35,8 +35,8 @@ public class Book {
         this.name = "";
         this.author = "";
         this.genre = "";
-        this.ISBN = 0;
-        this.year = 0;
+        this.ISBN = "";
+        this.year = "";
         this.publisher = "";
     }
     
@@ -50,7 +50,7 @@ public class Book {
      * @param year the year the book was published
      * @param publisher the publisher of the book
      */
-    public Book(String name, String author, String genre, int ISBN, int year, String publisher) {
+    public Book(String name, String author, String genre, String ISBN, String year, String publisher) {
         this.name = name;
         this.author = author;
         this.genre = genre;
@@ -114,7 +114,7 @@ public class Book {
      * one, 0 is the default
      * @return the book's ISBN
      */
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
     
@@ -125,7 +125,7 @@ public class Book {
      * one, 0 is the default
      * @param ISBN the ISBN of the book
      */
-    public void setISBN(int ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
     
@@ -133,7 +133,7 @@ public class Book {
      * Accessor for the year the book was published
      * @return the year the book was published, 0 if unknown
      */
-    public int getYear() {
+    public String getYear() {
         return year;
     }
     
@@ -141,7 +141,7 @@ public class Book {
      * Mutator for the year the book was published
      * @param year the year the book was published
      */
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
     

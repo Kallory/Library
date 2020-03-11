@@ -79,7 +79,7 @@ public class Library extends Application {
         ISBNColumn.setCellValueFactory(new PropertyValueFactory<>("ISBN"));
         
         //year column
-        TableColumn<Book, Integer> yearColumn = new TableColumn<>("Year Published");
+        TableColumn<Book, String> yearColumn = new TableColumn<>("Year Published");
         yearColumn.setMinWidth(100);
         yearColumn.setCellValueFactory(new PropertyValueFactory<>("year"));
         
@@ -155,7 +155,7 @@ public class Library extends Application {
         book.setAuthor(authorInput.getText());
         book.setGenre(genreInput.getText());
         book.setISBN(ISBNInput.getText());
-        book.setYear(Integer.parseInt(yearInput.getText()));
+        book.setYear(yearInput.getText());
         book.setPublisher(publisherInput.getText());
     }
     
@@ -165,7 +165,7 @@ public class Library extends Application {
     }
     public ObservableList<Book> getBook() {
         ObservableList<Book> books = FXCollections.observableArrayList();
-        books.add(new Book("A Game of Thrones", "G. R. R. Martin", "Fantasy", "9780553573404", 1996, "Bantam Books"));
+        books.add(new Book("A Game of Thrones", "G. R. R. Martin", "Fantasy", "9780553573404", "1996", "Bantam Books"));
         return books;
     }    
 }
